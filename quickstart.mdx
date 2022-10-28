@@ -2,10 +2,6 @@
 title: "Stackflow 시작하기"
 ---
 
-import Demo from "@/components/Demo";
-
-<Demo />
-
 **Stackflow**는 모바일 디바이스(iOS/Android 등)에서 주로 활용되는 Stack Navigation UX를 JavaScript 환경에서 구현하고, 이를 통해 하이브리드 앱과 웹뷰 개발을 쉽게 할 수 있도록 돕는 프로젝트에요.
 
 - 화면을 쌓고 스크롤을 유지해요.
@@ -86,7 +82,7 @@ import "@stackflow/plugin-basic-ui/index.css";
 
 그리고 원하는 렌더링 위치에 다음과 같이 `<Stack />` 컴포넌트를 초기화 해줘요.
 
-```tsx App.tsx
+```typescript App.tsx
 import React from "react";
 import { Stack } from "./stackflow";
 
