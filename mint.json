@@ -4,8 +4,8 @@
     "primary": "#000000"
   },
   "topbarCtaButton": {
-    "name": "Get Started",
-    "url": "/"
+    "type": "github",
+    "url": "https://github.com/daangn/stackflow"
   },
   "navigation": [
     {
