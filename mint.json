@@ -1,0 +1,22 @@
+{
+	"name": "Stackflow",
+	"logo": "",
+	"favicon": "",
+	"colors": {
+		"primary": "#000000"
+	},
+	"topbarLinks": [],
+	"topbarCtaButton": {
+		"name": "Get Started",
+		"url": "/"
+	},
+	"anchors": [],
+	"navigation": [
+		{
+			"group": "Home",
+			"pages": [
+				"introduction"
+			]
+		}
+	]
+}
