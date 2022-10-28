@@ -1,6 +1,6 @@
-import Callout from "nextra-theme-docs/callout";
-
-# 미리 API 호출하기
+---
+title: 미리 API 호출하기
+---
 
 ## Preload 플러그인
 
@@ -14,10 +14,7 @@ $ yarn add @stackflow/plugin-preload
 
 설치가 완료되면 다음과 같이 `stackflow()` 함수의 `plugins` 필드에 플러그인을 등록해요.
 
-```typescript
-/**
- * stackflow.ts
- */
+```typescript stackflow.ts
 import { stackflow } from "@stackflow/react";
 import { basicRendererPlugin } from "@stackflow/plugin-renderer-basic";
 import { preloadPlugin } from "@stackflow/plugin-preload";
@@ -55,10 +52,7 @@ export type TypeActivities = typeof activities;
 
 이후 각 액티비티 내에서 `useActivityPreloadRef()` 훅을 통해 해당 `preloadRef` 값을 가져올 수 있어요.
 
-```tsx
-/**
- * MyActivity.tsx
- */
+```typescript MyActivity.tsx
 import React from "react";
 import { ActivityComponentType } from "@stackflow/react";
 import { useActivityPreloadRef } from "@stackflow/plugin-preload";
@@ -78,10 +72,9 @@ const MyActivity: ActivityComponentType = () => {
 
 `createPreloader()` 함수를 통해 Type-safe한 `usePreloader()` 훅을 만들어요.
 
-```typescript
-/**
- * usePreloader.ts
- */
+<CodeGroup>
+
+```typescript usePreloader.ts
 import { createPreloader } from "@stackflow/plugin-preload";
 import type { TypeActivities } from "./stackflow";
 
@@ -89,10 +82,7 @@ import type { TypeActivities } from "./stackflow";
 export const { usePreloader } = createPreloader<TypeActivities>();
 ```
 
-```tsx
-/**
- * MyActivity.tsx
- */
+```typescript MyActivity.tsx
 import { ActivityComponentType } from "@stackflow/react";
 import { usePreloader } from "./usePreloader";
 
@@ -110,6 +100,8 @@ const MyActivity:  = () => {
 };
 ```
 
+</CodeGroup>
+
 ## `<Link />` 컴포넌트
 
 만약 프로젝트에서 Preload 플러그인과 History Sync 플러그인을 모두 사용하고 있다면, `<Link />` 컴포넌트를 활용할 수 있어요.
@@ -122,10 +114,7 @@ $ yarn add @stackflow/link
 
 `createLink()` 함수를 통해 Type-safe한 Link 컴포넌트를 만들어요.
 
-```typescript
-/**
- * Link.ts
- */
+```typescript Link.ts
 import { createLink } from "@stackflow/link";
 import type { TypeActivities } from "./stackflow";
 
@@ -135,10 +124,7 @@ export const { Link } = createLink<TypeActivities>();
 
 이후 다음과 같이 `activityName`과 `activityParams`를 Props로 갖는 `<Link />` 컴포넌트를 사용해요.
 
-```tsx
-/**
- * MyComponent.ts
- */
+```typescript MyComponent.ts
 import { Link } from './Link'
 
 const MyComponent = () => {
@@ -156,8 +142,8 @@ const MyComponent = () => {
 }
 ```
 
-<Callout emoji="⚡️">
+<Note>
   `<Link />` 컴포넌트는 내부적으로 `usePreloader()` 훅을 사용해, 사용자의 뷰포트
   안에 해당 컴포넌트가 노출되었을때 미리 데이터를 가져와요. 따라서, 사용자에게
   로딩이 없는 탐험 경험을 제공할 수 있어요.
-</Callout>
+</Note>

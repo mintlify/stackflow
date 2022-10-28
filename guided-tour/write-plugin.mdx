@@ -1,7 +1,8 @@
-import Callout from "nextra-theme-docs/callout";
-import DiagramEffectHook from "../../components/DiagramEffectHook.tsx";
+---
+title: 플러그인 작성하기
+---
 
-# 플러그인 작성하기
+import DiagramEffectHook from "../snippets/DiagramEffectHook.mdx";
 
 **Stackflow**는 플러그인 인터페이스를 통해 다른 사람이 작성한 확장 로직을 쉽게 내 어플리케이션과 연동할 수 있도록 도와요. 플러그인을 통해 나의 문제를 해결하고, 이를 예쁘게 감싸서 다른 사람과 공유해보세요.
 
@@ -67,7 +68,7 @@ stackflow({
 
 렌더링을 새로 추가하고 싶다면, `render` API를 사용할 수 있어요. Stack 상태를 이용해 어떻게 DOM을 최적화할지 결정하고 싶거나, 때에 따라 새로 얹을 새로운 DOM 트리가 필요하다면 `render` API를 활용하세요.
 
-```tsx
+```typescript
 stackflow({
   // ...
   plugins: [
@@ -93,7 +94,7 @@ stackflow({
 
 다음과 같이 UI에 전달되는 스택 상태를 덮어 쓸 수도 있어요.
 
-```tsx
+```typescript
 stackflow({
   // ...
   plugins: [
@@ -123,16 +124,16 @@ stackflow({
 });
 ```
 
-<Callout emoji="💡">
+<Tip>
   덮어써진 상태값은 메인 스택에는 영향을 주지 않고, 해당 렌더링 하위의 React 의
   `useStack()`, `useActivity()`에만 적용돼요.
-</Callout>
+</Tip>
 
 ## 스택 감싸기
 
 최상단에 Context API Provider를 추가하고 싶거나, 최상단을 특정 DOM으로 감싸고 싶다면 `wrapStack` 인터페이스를 활용하세요.
 
-```tsx
+```typescript
 stackflow({
   // ...
   plugins: [
@@ -149,16 +150,16 @@ stackflow({
 });
 ```
 
-<Callout type="warning" emoji="⚠️">
+<Warning>
   **주의** - `wrapStack` API는 모든 렌더링에 함께 적용돼요. 의도치 않은 사이드
   이펙트가 생길 수 있으니 주의해서 사용해요.
-</Callout>
+</Warning>
 
 ## 액티비티 감싸기
 
 각 액티비티를 Context API Provider를 추가하고 싶거나, 특정 DOM으로 감싸고 싶다면 `wrapActivity` 인터페이스를 활용하세요.
 
-```tsx
+```javascript
 stackflow({
   // ...
   plugins: [
@@ -175,16 +176,16 @@ stackflow({
 });
 ```
 
-<Callout type="warning" emoji="⚠️">
+<Warning>
   **주의** - `wrapActivity` API는 모든 렌더링에 함께 적용돼요. 의도치 않은
   사이드 이펙트가 생길 수 있으니 주의해서 사용해요.
-</Callout>
+</Warning>
 
 ## 초기화 시점에 동작 주입하기
 
 `<Stack />` 컴포넌트가 최초로 초기화 될 때 로직을 호출하고 싶다면 `onInit` 훅을 사용해요.
 
-```tsx
+```typescript
 stackflow({
   // ...
   plugins: [
@@ -200,10 +201,10 @@ stackflow({
 });
 ```
 
-<Callout type="warning" emoji="⚠️">
+<Warning>
   **주의** - React 18과 `React.StrictMode`에서는 두 번 호출 될 수 있으니, 의도치
   않은 부수효과가 없도록 신경써주세요.
-</Callout>
+</Warning>
 
 ## 이펙트 훅
 
@@ -223,7 +224,7 @@ Post-effect 훅에는 `onPushed`, `onReplaced`, `onPopped`, `onChanged`가 있�
 | `actions.dispatchEvent()` | 코어에 새 이벤트를 추가해요 (이벤트에 대한 자세한 설명은 [설계와 원칙](/architectures) 문서에서 확인할 수 있어요) |
 | `effect`                  | 해당 이펙트 훅을 촉발시킨 이펙트를 가져올 수 있어요                                                               |
 
-```tsx
+```typescript
 stackflow({
   // ...
   plugins: [
@@ -243,16 +244,16 @@ stackflow({
 });
 ```
 
-<Callout emoji="💡">
+<Tip>
   `onChanged` 훅은 스택 상태가 변경될때마다 구별없이 모두 호출돼요. 따라서
   `onPushed`, `onReplaced`, `onPopped`와 함께 사용하면, 두 이펙트 훅 모두
   호출돼요.
-</Callout>
-<Callout type="error" emoji="🚫">
+</Tip>
+<Warning>
   **경고** - 만약 이펙트 훅 내부에서 해당 이펙트를 촉발하는 이벤트를
   dispatch하는 경우 이펙트 훅과 맞물려서 무한 루프가 돌 수 있어요.
   `actions.dispatchEvent()`를 활용하는 경우 주의해서 사용하세요.
-</Callout>
+</Warning>
 
 ### Pre-effects
 
@@ -269,7 +270,7 @@ Pre-effect 훅에는 `onBeforePush`, `onBeforeReplace`, `onBeforePop`이 있어�
 
 `initialPushedEvent` API를 통해 기존에 존재하는 `initialActivity` 동작을 덮어쓸 수 있어요. (이벤트에 대한 자세한 설명은 원칙과 설계 문서를 참고하세요)
 
-```tsx
+```typescript
 import { makeEvent } from "@stackflow/core";
 
 stackflow({

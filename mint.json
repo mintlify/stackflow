@@ -1,22 +1,39 @@
 {
-	"name": "Stackflow",
-	"logo": "",
-	"favicon": "",
-	"colors": {
-		"primary": "#000000"
-	},
-	"topbarLinks": [],
-	"topbarCtaButton": {
-		"name": "Get Started",
-		"url": "/"
-	},
-	"anchors": [],
-	"navigation": [
-		{
-			"group": "Home",
-			"pages": [
-				"introduction"
-			]
-		}
-	]
+  "name": "Stackflow",
+  "colors": {
+    "primary": "#000000"
+  },
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "/"
+  },
+  "navigation": [
+    {
+      "group": "홈",
+      "pages": ["quickstart"]
+    },
+    {
+      "group": "가이드",
+      "pages": [
+        "guided-tour/activity",
+        "guided-tour/navigating",
+        "guided-tour/state",
+        "guided-tour/customize-ui",
+        "guided-tour/write-plugin"
+      ]
+    },
+    {
+      "group": "가이드",
+      "pages": [
+        "advanced/history-sync",
+        "advanced/fix-use-flow",
+        "advanced/preloading",
+        "advanced/migrate-from-karrotframe"
+      ]
+    },
+    {
+      "group": "",
+      "pages": ["architectures", "help"]
+    }
+  ]
 }

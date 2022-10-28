@@ -1,6 +1,6 @@
-import Callout from "nextra-theme-docs/callout";
-
-# Karrotframe에서 이사가기
+---
+title: Karrotframe에서 이사가기
+---
 
 Karrotframe과 **Stackflow**는 다음과 같은 멘탈모델의 차이가 존재해요.
 
@@ -18,24 +18,24 @@ Karrotframe의 경우,
 
 이러한 멘탈 모델을 옮겨간다고 생각하고 이사를 하면 좋아요.
 
-<Callout emoji="⚡️">
+<Tip>
   기존 Path 기반의 라우팅을 **Stackflow**에서 사용하기 위해서는
   [`@stackflow/plugin-history-sync`](/advanced/history-sync) 적용이 필요해요.
   액티비티 이름과 URL 템플릿을 매핑하고, 액티비티 파라미터를 템플릿 내 패스
   파라미터와 연결할 수 있어요.
-</Callout>
+</Tip>
 
-<Callout type="warning" emoji="⚠️">
+<Warning>
   본 마이그레이션 가이드는 부분적인 컨셉을 담고있고 100% 기능을 커버하지 않아요.
   Karrotframe에서 쓰던 기능은 전부 다 옮겨왔으므로, 혹시 추가적으로 필요하다고
   생각되는 기능이 있으시다면 문서를 찬찬히 살펴보시면 찾으실 수 있을거에요.
-</Callout>
+</Warning>
 
 ## 1. Stack으로 옮겨가기
 
 다음과 같이 기존의 `<Navigator />`와 `<Screen />` 컴포넌트를 통해 페이지를 등록하던 로직을 `stackflow()` 함수와 `historySyncPlugin()`을 통해 등록하는 과정으로 바꿔요.
 
-```tsx
+```typescript
 /**
  * as-is:
  */
@@ -49,7 +49,7 @@ const App: React.FC = () => {
 };
 ```
 
-```tsx
+```typescript
 /**
  * to-be:
  */
@@ -77,7 +77,7 @@ const App: React.FC = () => {
 
 다음과 같이 기존에 네비게이팅을 담당하던 `useNavigator()`를 `useFlow()`로 변경해요.
 
-```tsx
+```typescript
 /**
  * as-is:
  */
@@ -92,7 +92,7 @@ const MyPage = () => {
 };
 ```
 
-```tsx
+```typescript
 /**
  * to-be:
  */
@@ -111,7 +111,7 @@ const MyPage = () => {
 
 기존에 `useParams()`, `useQueryParams()` 훅으로 파라미터를 받던 부분을 `useActivityParams()`로 교체해요.
 
-```tsx
+```typescript
 /**
  * as-is:
  */
@@ -122,7 +122,7 @@ const SomethingPage = () => {
 };
 ```
 
-```tsx
+```typescript
 /**
  * to-be:
  */
@@ -137,7 +137,7 @@ const SomethingPage = () => {
 
 Stackflow는 기본적으로 UI를 포함하고 있지 않아요. 따라서 껍데기 컴포넌트를 각 액티비티에 넣어주어야해요.
 
-```tsx
+```typescript
 /**
  * as-is:
  */
@@ -146,7 +146,7 @@ const SomethingPage = () => {
 };
 ```
 
-```tsx
+```typescript
 /**
  * to-be:
  */
@@ -159,8 +159,8 @@ const SomethingPage = () => {
 };
 ```
 
-<Callout emoji="⚡️">
+<Note>
   `<AppScreen />` 컴포넌트에 필요한 Props는 여러 부분에서 반복될 수 있어요.
   따라서 `<AppScreen />` 을 `<MyLayout />` 같은 컴포넌트를 만들고, 한번 감싸서
   활용하시는걸 추천드려요.
-</Callout>
+</Note>
