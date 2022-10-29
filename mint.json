@@ -1,7 +1,10 @@
 {
   "name": "Stackflow",
   "colors": {
-    "primary": "#000000"
+    "primary": "#000000",
+    "background": {
+      "dark": "#111111"
+    }
   },
   "topbarCtaButton": {
     "type": "github",
