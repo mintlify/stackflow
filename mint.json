@@ -10,6 +10,13 @@
     "type": "github",
     "url": "https://github.com/daangn/stackflow"
   },
+  "anchors": [
+    {
+      "icon": "user",
+      "name": "Contribute",
+      "url": "https://github.com/daangn/stackflow/blob/main/CONTRIBUTING.md"
+    }
+  ],
   "navigation": [
     {
       "group": "홈",
