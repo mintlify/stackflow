@@ -1,5 +1,6 @@
 {
   "name": "Stackflow",
+  "favicon": "/favicon-16x16.png",
   "colors": {
     "primary": "#000000",
     "background": {
