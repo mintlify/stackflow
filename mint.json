@@ -2,7 +2,11 @@
   "name": "Stackflow",
   "favicon": "/favicon-16x16.png",
   "colors": {
-    "primary": "#000000",
+    "primary": "#2D2D2D",
+    "light": "#D6D6D6",
+    "dark": "#121212",
+    "ultraLight": "#EFEFEF",
+    "ultraDark": "#121212",
     "background": {
       "dark": "#111111"
     }
