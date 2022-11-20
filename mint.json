@@ -17,7 +17,7 @@
   },
   "anchors": [
     {
-      "icon": "user",
+      "icon": "code",
       "name": "Contribute",
       "url": "https://github.com/daangn/stackflow/blob/main/CONTRIBUTING.md"
     }
